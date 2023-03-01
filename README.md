@@ -11,4 +11,4 @@ More information will be added to this readme as development continues
 - Open up command line, and run the command `python -m venv "C:\path_to_your_virtual_envs_folder"`
   - If this does not work, try `C:\path_to_python_3.11\python.exe -m venv "C:\path_to_your_virtual_envs_folder"`
 - Next run the command `C:\path_to_your_venv\Scripts\python.exe -m pip install --upgrade pip`
-- Finally, run the command `C:\path_to_your_venv\Scripts\python.exe -m pip install -r "C:\path_to_local_coolermathgames\requirements.txt`
+- Finally, run the command `C:\path_to_your_venv\Scripts\python.exe -m pip install -r "C:\path_to_local_coolermathgames\requirements.txt"`
