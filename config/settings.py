@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cooler_math_games.apps.CoolerMathGamesConfig'
 ]
 
 MIDDLEWARE = [
