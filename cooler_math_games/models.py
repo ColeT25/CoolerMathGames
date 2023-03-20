@@ -20,7 +20,7 @@ class Game(models.Model):
         return f'{self.name} by {self.author} currently has {self.number_of_active_players} active players'
 
 
-class GameScores(models.Model):
+class GameScore(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)

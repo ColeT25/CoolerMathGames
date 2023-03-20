@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cooler Math Games Home</title>
+</head>
+<body>
+{% if top_games %}
+    <ul>
+        {% for game in top_games %}
+            <li>{{ game }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Uh oh, there are no games :(</p>
+{% endif %}
+</body>
+</html>
