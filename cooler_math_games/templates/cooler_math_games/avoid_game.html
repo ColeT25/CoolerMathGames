@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This is a simple game straight up copied from chat gpt to test out how this will work-->
+<head>
+    <meta charset="UTF-8">
+    <title>Avoid the Square!</title>
+	<script>
+		function redirectAfter30Seconds(url) {
+  			setTimeout(function() {
+    			window.location.href = url;
+  			}, 30000); // 30 seconds in milliseconds
+		}
+	</script>
+    <style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #eee;
+		}
+
+		#player {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50px;
+			height: 50px;
+			background-color: red;
+		}
+
+		#enemy {
+			position: absolute;
+			top: 10%;
+			left: 10%;
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body onload="alert('{{ user }} avoid the square for 30 seconds!');">
+	<div id="player"></div>
+	<div id="enemy"></div>
+	<script>
+		redirectAfter30Seconds("{% url 'cooler_math_games:game_end' 100 'Avoid the Square' %}")
+		// Get the player and enemy elements
+		var player = document.getElementById("player");
+		var enemy = document.getElementById("enemy");
+
+		// Move the player towards the cursor on mousemove event
+		document.addEventListener('mousemove', function(event) {
+			player.style.left = event.clientX - player.offsetWidth / 2 + "px";
+			player.style.top = event.clientY - player.offsetHeight / 2 + "px";
+		});
+
+		// Set the enemy's starting position
+		var enemyX = 10;
+		var enemyY = 10;
+
+		enemy.style.top = enemyY + "px";
+		enemy.style.left = enemyX + "px";
+
+		// Move the enemy towards the player every 50 milliseconds
+		setInterval(function() {
+			var playerX = parseInt(player.style.left, 10) + player.offsetWidth / 2;
+			var playerY = parseInt(player.style.top, 10) + player.offsetHeight / 2;
+
+			if (enemyX < playerX) {
+				enemyX++;
+			} else if (enemyX > playerX) {
+				enemyX--;
+			}
+
+			if (enemyY < playerY) {
+				enemyY++;
+			} else if (enemyY > playerY) {
+				enemyY--;
+			}
+
+			enemy.style.top = enemyY + "px";
+			enemy.style.left = enemyX + "px";
+		}, 50);
+	</script>
+</body>
+</html>
