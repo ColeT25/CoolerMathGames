@@ -6,7 +6,8 @@ from .forms import LoginForm, SaveScoreForm
 
 # home page for cooler math games
 def home(request):
-    top_5_games = Game.objects.order_by('-number_of_active_players')[:5]
+    top_5_games = Game.objects.order_by('-total_plays')[:5]
+    # todo add link to game here, may have to add to database as well so this can be dynamically generated
     return render(request, 'cooler_math_games/home.html', {'top_games': top_5_games})
 
 
