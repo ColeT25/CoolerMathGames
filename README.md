@@ -25,7 +25,7 @@ THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM
 - The login information is:
   - Username: Admin
   - Password: Password
-  - Just pretend it's secure no one will know
+  - Just pretend it's secure no one will know ;)
 - Now if you click on Games, you can easily add a game to the database! This should be the first thing you do whenever you add a game to CoolerMathGames
 - You can also do this for Game Scores, or Users to easily add things to the database
 - **You may want to backup the database when you make changes, I am not sure how nice a sqlite database plays with github**
