@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Cooler Math Games Home</title>
+    {% load cooler_math_games_extras %}
 </head>
 <body>
-{% if top_games %}
+{% if top_games and game_urls %}
     <ul>
-        {% for game in top_games %}
-            <li>{{ game }}</li>
+        {% for game, game_link in top_games|zip:game_urls %}
+            <li><a href="{{ game_link }}">{{ game }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

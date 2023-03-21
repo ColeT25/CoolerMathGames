@@ -7,8 +7,11 @@ from .forms import LoginForm, SaveScoreForm
 # home page for cooler math games
 def home(request):
     top_5_games = Game.objects.order_by('-total_plays')[:5]
-    # todo add link to game here, may have to add to database as well so this can be dynamically generated
-    return render(request, 'cooler_math_games/home.html', {'top_games': top_5_games})
+    game_urls = []
+    # todo if we ever run this on a real server we will need to change the url a bit
+    for game in top_5_games:
+        game_urls.append(f'http://127.0.0.1:8000/games/{game.name}/')
+    return render(request, 'cooler_math_games/home.html', {'top_games': top_5_games, 'game_urls': game_urls})
 
 
 # login page for cooler math games
@@ -41,6 +44,6 @@ def game_end(request, score, game_name):
 # PUT GAME VIEWS BELOW HERE
 
 
-def avoid_game(request, username):
-    # todo the username doesn't do much right now, since this is just a test game
-    return render(request, 'cooler_math_games/avoid_game.html', {'user': username})
+def avoid_game(request):
+    # todo right now the user is always anon, will be changed in the future
+    return render(request, 'cooler_math_games/avoid_game.html', {'user': 'anon'})
