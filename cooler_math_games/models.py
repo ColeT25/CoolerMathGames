@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import now
 
 
 # todo add encryption, this is pretty horribly insecure right now
@@ -25,7 +24,7 @@ class GameScore(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
-    date_obtained = models.DateField(now())
+    date_obtained = models.DateField()
 
     def __str__(self):
         return f'{self.user} obtained a score of {self.score} in {self.game} on {self.date_obtained}'

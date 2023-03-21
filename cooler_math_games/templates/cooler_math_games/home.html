@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <title>Cooler Math Games Home</title>
     {% load cooler_math_games_extras %}
+    {% load static %}
+    <link href="{% static 'cooler_math_games/home/home.css' %}" rel="stylesheet">
+
 </head>
 <body>
+<h1>Welcome to Cooler Math Games</h1>
 {% if top_games and game_urls %}
     <ul>
         {% for game, game_link in top_games|zip:game_urls %}
-            <li><a href="{{ game_link }}">{{ game }}</a></li>
+            <li><a href="{{ game_link }}">{{ game }}</a><img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}"></li>
         {% endfor %}
     </ul>
 {% else %}
