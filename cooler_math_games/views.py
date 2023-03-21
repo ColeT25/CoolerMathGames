@@ -5,7 +5,6 @@ from .models import Game, GameScore, User
 from .forms import LoginForm, SaveScoreForm
 
 
-
 # home page for cooler math games
 def home(request):
     top_5_games = Game.objects.order_by('-total_plays')[:5]
@@ -37,7 +36,7 @@ def game_end(request, score, game_name):
             game = Game.objects.get(name=form.cleaned_data['game'])
             user = User.objects.get(username=form.cleaned_data['user'])
             GameScore.objects.create(user=user, game=game, score=form.cleaned_data['score'], date_obtained=now())
-            return HttpResponseRedirect('/home/')  # todo probably want a play again type of page here instead of just going home
+            return HttpResponseRedirect('/games/home/')  # todo probably want a play again type of page here instead of just going home
     else:
         form = SaveScoreForm()
         form.fields['user'].initial = 'Anon'  # todo will eventually be a real user
