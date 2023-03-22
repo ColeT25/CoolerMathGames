@@ -50,4 +50,7 @@ def game_end(request, score, game_name):
 
 def avoid_game(request):
     # todo right now the user is always anon, will be changed in the future
+    avoid_game_db = Game.objects.get(name='avoid')
+    avoid_game_db.total_plays += 1
+    avoid_game_db.save()
     return render(request, 'cooler_math_games/avoid_game.html', {'user': 'anon'})
