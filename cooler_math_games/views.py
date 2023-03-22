@@ -1,9 +1,17 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.utils.timezone import now
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
 
 from .models import Game, GameScore, User
-from .forms import LoginForm, SaveScoreForm
+from .forms import SaveScoreForm
 
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('cooler_math_games:login')
+    template_name = 'registration/signup.html'
 
 # home page for cooler math games
 def home(request):
@@ -13,18 +21,6 @@ def home(request):
     for game in top_5_games:
         game_urls.append(f'http://127.0.0.1:8000/games/{game.name}/')
     return render(request, 'cooler_math_games/home.html', {'top_games': top_5_games, 'game_urls': game_urls})
-
-
-# login page for cooler math games
-def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            # todo actually login
-            print('hello_there')
-    else:
-        form = LoginForm()
-    return render(request, 'cooler_math_games/login.html', {'form': form})
 
 
 # score saving page for cooler math games
@@ -45,13 +41,23 @@ def game_end(request, score, game_name):
     return render(request, 'cooler_math_games/game_end.html', {'form': form})
 
 
+
+
+
 # PUT GAME VIEWS BELOW HERE
 
 
 def avoid_game(request):
     # todo right now the user is always anon, will be changed in the future
+    avoid_game_db = Game.objects.get(name='avoid')
+    avoid_game_db.total_plays += 1
+    avoid_game_db.save()
     return render(request, 'cooler_math_games/avoid_game.html', {'user': 'anon'})
+
 
 def flappy(request):
     # todo right now the user is always anon, will be changed in the future
+    flappy_game_db = Game.objects.get(name='flappy')
+    flappy_game_db.total_plays += 1
+    flappy_game_db.save()
     return render(request, 'cooler_math_games/flappy.html', {'user': 'anon'})
