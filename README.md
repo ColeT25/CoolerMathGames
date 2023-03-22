@@ -1,6 +1,6 @@
 # CoolerMathGames
 More information will be added to this readme as development continues
-THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM NOT SURE I'M SORRY, I AM ALSO GOING TO ADD MORE COMMENTS TO THE CODE SO IT IS EASIER TO NAVIGATE
+THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM NOT SURE I'M SORRY
 
 # Running CoolerMathGames locally
 
@@ -31,5 +31,9 @@ THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM
 - **You may want to backup the database when you make changes, I am not sure how nice a sqlite database plays with github**
 
 # Cheat sheet to help you add games
-
-#
+When you add a game, you will have to add it in several places:
+1. Add a link to the game in cooler_math_games\urls.py (look at django documentation or other urls to see how to do this)
+2. Add a view to the game in cooler_math_games\views.py (look at django documentation or other views to see how to do this)
+3. Add a template with the html to the game in cooler_math_games\templates\cooler_math_games that your new view will use
+4. Add any neccecary static files you need to reference in your template in cooler_math_games\static\
+5. Add your game to the database by going to http://127.0.0.1:8000/admin and adding it there (make sure the name of the game matches what it is in the code as well)
