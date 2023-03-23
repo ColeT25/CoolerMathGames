@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mines</title>
+
+        {% load static %}
+        <link href="{% static 'cooler_math_games/mines/mines.css' %}" rel="stylesheet">
+        <script src ="{% static 'cooler_math_games/mines/mines.js' %}" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <h1>Mines: <span id="mines-count">0</span> &emsp; Flags Remaining: <span id="flags-remaining">0</span></h1>
+        <div id="board">
+        </div>
+        <br>
+        <button id="flag-button">🚩</button>
+    </body>
+</html>
