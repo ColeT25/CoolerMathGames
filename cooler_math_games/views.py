@@ -68,3 +68,10 @@ def mines(request):
     mines_game_db.total_plays += 1
     mines_game_db.save()
     return render(request, 'cooler_math_games/mines.html', {'user': 'anon'})
+
+def phaser_test(request):
+    # todo right now the user is always anon, will be changed in the future
+    phaser_game_db = Game.objects.get(name='phasertest')
+    phaser_game_db.total_plays += 1
+    phaser_game_db.save()
+    return render(request, 'cooler_math_games/phaser_test.html', {'user': 'anon'})
