@@ -11,7 +11,7 @@
 <body>
     <div class="header" id="home-header">
         <br><br>
-        <h1>Welcome to Cooler Math Games {{ user.username|default:'Guest' }}!</h1>
+        <h1>Welcome to Cooler Math Games, {{ user.username|default:'Guest' }}!</h1>
     {% if user.is_authenticated %}
         <a id="logout" href="{% url 'cooler_math_games:logout' %}">&emsp;Log out!</a>
 
