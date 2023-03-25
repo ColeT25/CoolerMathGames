@@ -68,3 +68,10 @@ def mines(request):
     mines_game_db.total_plays += 1
     mines_game_db.save()
     return render(request, 'cooler_math_games/mines.html', {'user': 'anon'})
+
+def game_2048(request):
+    # todo right now the user is always anon, will be changed in the future
+    game_2048_db = Game.objects.get(name='2048')
+    game_2048_db.total_plays += 1
+    game_2048_db.save()
+    return render(request, 'cooler_math_games/2048.html', {'user': 'anon'})
