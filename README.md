@@ -37,3 +37,4 @@ When you add a game, you will have to add it in several places:
 3. Add a template with the html to the game in cooler_math_games\templates\cooler_math_games that your new view will use
 4. Add any neccecary static files you need to reference in your template in cooler_math_games\static\
 5. Add your game to the database by going to http://127.0.0.1:8000/admin and adding it there (make sure the name of the game matches what it is in the code as well)
+6. Add a thumbnail .png image to cooler_math_games\static\images

@@ -9,15 +9,34 @@
 
 </head>
 <body>
-<h1>Welcome to Cooler Math Games</h1>
-{% if top_games and game_urls %}
-    <ul>
-        {% for game, game_link in top_games|zip:game_urls %}
-            <li><a href="{{ game_link }}">{{ game }}</a><img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}"></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Uh oh, there are no games :(</p>
-{% endif %}
+    <div class="header" id="home-header">
+        <h1>Welcome to Cooler Math Games {{ user.username|default:'Guest' }}!</h1>
+    {% if user.is_authenticated %}
+        <a id="logout" href="{% url 'cooler_math_games:logout' %}">Log out!</a>
+
+    {% else %}
+        <a id="login" href="{% url 'cooler_math_games:login' %}">Login!</a>
+        <a id="create_account" href="{% url 'cooler_math_games:signup' %}">Create an account!</a>
+    {% endif %}
+    </div>
+
+    <nav class="navbar" id="home-nav">
+        <ul id="navlist">
+            <li><a href="./"> Testing </a></li>
+            <li><a href="./"> Credits </a></li>
+            <li><a href="./"> Games </a></li>
+            <li><a href="./"> Cokey the Bear </a></li>
+        </ul>
+    </nav>
+
+    {% if top_games and game_urls %}
+        <ul>
+            {% for game, game_link in top_games|zip:game_urls %}
+                <li><a href="{{ game_link }}">{{ game }}</a><img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}"></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Uh oh, there are no games :(</p>
+    {% endif %}
 </body>
 </html>
