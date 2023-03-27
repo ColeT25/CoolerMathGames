@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 
-from .models import Game, GameScore, User
+from .models import Game, GameScore
 from .forms import SaveScoreForm
 
 
@@ -13,14 +13,15 @@ class SignUp(CreateView):
     success_url = reverse_lazy('cooler_math_games:login')
     template_name = 'registration/signup.html'
 
+
 # home page for cooler math games
 def home(request):
-    top_5_games = Game.objects.order_by('-total_plays')[:5]
+    all_games = Game.objects.order_by('-total_plays')
     game_urls = []
     # todo if we ever run this on a real server we will need to change the url a bit
-    for game in top_5_games:
+    for game in all_games:
         game_urls.append(f'http://127.0.0.1:8000/games/{game.name}/')
-    return render(request, 'cooler_math_games/home.html', {'top_games': top_5_games, 'game_urls': game_urls})
+    return render(request, 'cooler_math_games/home.html', {'top_games': all_games, 'game_urls': game_urls})
 
 
 # score saving page for cooler math games
@@ -30,29 +31,35 @@ def game_end(request, score, game_name):
         if form.is_valid():
             # todo need to add code to ensure queries return real results
             game = Game.objects.get(name=form.cleaned_data['game'])
-            user = User.objects.get(username=form.cleaned_data['user'])
+            if request.user.is_authenticated:
+                user = request.user.username
+            else:
+                user = 'guest'
             GameScore.objects.create(user=user, game=game, score=form.cleaned_data['score'], date_obtained=now())
             return HttpResponseRedirect('/games/home/')  # todo probably want a play again type of page here instead of just going home
     else:
         form = SaveScoreForm()
-        form.fields['user'].initial = 'Anon'  # todo will eventually be a real user
+        if request.user.is_authenticated:
+            form.fields['user'].initial = request.user.username
+        else:
+            form.fields['user'].initial = 'guest'
         form.fields['score'].initial = score
         form.fields['game'].initial = game_name
     return render(request, 'cooler_math_games/game_end.html', {'form': form})
 
 
-
-
-
 # PUT GAME VIEWS BELOW HERE
 
-
 def avoid_game(request):
-    # todo right now the user is always anon, will be changed in the future
     avoid_game_db = Game.objects.get(name='avoid')
     avoid_game_db.total_plays += 1
     avoid_game_db.save()
-    return render(request, 'cooler_math_games/avoid_game.html', {'user': 'anon'})
+    context = {'user': ''}
+    if request.user.is_authenticated:
+        context['user'] = request.user.username
+    else:
+        context['user'] = 'guest'
+    return render(request, 'cooler_math_games/avoid_game.html', context)
 
 
 def flappy(request):
