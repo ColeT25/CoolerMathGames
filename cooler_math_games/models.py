@@ -17,4 +17,4 @@ class GameScore(models.Model):
     date_obtained = models.DateField()
 
     def __str__(self):
-        return f'{self.user} obtained a score of {self.score} in {self.game} on {self.date_obtained}'
+        return f'{self.user} obtained a score of {self.score} in {self.game.name} on {self.date_obtained}'
