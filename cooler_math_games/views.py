@@ -82,3 +82,17 @@ def game_2048(request):
     game_2048_db.total_plays += 1
     game_2048_db.save()
     return render(request, 'cooler_math_games/2048.html', {'user': 'anon'})
+
+def phaser_test(request):
+    # todo right now the user is always anon, will be changed in the future
+    phaser_game_db = Game.objects.get(name='phasertest')
+    phaser_game_db.total_plays += 1
+    phaser_game_db.save()
+    return render(request, 'cooler_math_games/phaser_test.html', {'user': 'anon'})
+
+def hangman(request):
+    # todo right now the user is always anon, will be changed in the future
+    hangman_db = Game.objects.get(name='hangman')
+    hangman_db.total_plays += 1
+    hangman_db.save()
+    return render(request, 'cooler_math_games/hangman.html', {'user': 'anon'})

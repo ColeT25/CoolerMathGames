@@ -21,14 +21,9 @@ THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM
 - When you are ready to do admin things, move on to the next step!
 
 ## 4. Modify the database in order to add a game, user, or score
-- Now that you have CoolerMathGames running locally on a development server, go to `http://127.0.0.1:8000/admin`
-- The login information is:
-  - Username: Admin
-  - Password: Password
-  - Just pretend it's secure no one will know ;)
+- Now that you have CoolerMathGames running locally on a development server, go to `http://127.0.0.1:8000/admin` and login
 - Now if you click on Games, you can easily add a game to the database! This should be the first thing you do whenever you add a game to CoolerMathGames
 - You can also do this for Game Scores, or Users to easily add things to the database
-- **You may want to backup the database when you make changes, I am not sure how nice a sqlite database plays with github**
 
 # Cheat sheet to help you add games
 When you add a game, you will have to add it in several places:
