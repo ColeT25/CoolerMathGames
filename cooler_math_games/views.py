@@ -75,3 +75,10 @@ def game_2048(request):
     game_2048_db.total_plays += 1
     game_2048_db.save()
     return render(request, 'cooler_math_games/2048.html', {'user': 'anon'})
+
+def credits(request):
+    # todo right now the user is always anon, will be changed in the future
+    game_2048_db = Game.objects.get(name='2048')
+    game_2048_db.total_plays += 1
+    game_2048_db.save()
+    return render(request, 'cooler_math_games/2048.html', {'user': 'anon'})
