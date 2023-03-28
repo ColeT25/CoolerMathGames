@@ -62,6 +62,7 @@ def flappy(request):
     flappy_game_db.save()
     return render(request, 'cooler_math_games/flappy.html', {'user': 'anon'})
 
+
 def mines(request):
     # todo right now the user is always anon, will be changed in the future
     mines_game_db = Game.objects.get(name='mines')
