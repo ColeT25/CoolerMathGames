@@ -3,3 +3,8 @@
         width: 65%;
         margin: 0 auto;
       }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
