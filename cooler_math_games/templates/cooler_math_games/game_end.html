@@ -5,10 +5,11 @@
     <title>Game over!</title>
 </head>
 <body>
-    <form action="{% url 'cooler_math_games:game_end' 0 'SUBMISSION' %}" method="post">
+    <form action="{% url 'cooler_math_games:game_end' score game %}" method="post">
         {% csrf_token %}
         {{ form.as_table }}
         <input type="submit" value="Save Your Score!">
     </form>
+    <a href=" {% url 'cooler_math_games:home' %}">Do not save my score</a>
 </body>
 </html>

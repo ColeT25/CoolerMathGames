@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboards</title>
+</head>
+<body>
+{% for game, score_data in leader_boards.items %}
+    {% if score_data %}
+        <h1>Highscores for {{ game }}</h1>
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+                <th>Date achieved</th>
+            </tr>
+            {% for score_information in score_data %}
+                <tr>
+                    <td>{{ score_information.user }}</td>
+                    <td>{{ score_information.score }}</td>
+                    <td>{{ score_information.time }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endfor %}
+</body>
+</html>

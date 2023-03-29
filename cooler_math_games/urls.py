@@ -11,5 +11,8 @@ urlpatterns = [
     path('Flappy/', views.flappy, name='Flappy'),
     path('Mines/', views.mines, name='Mines'),
     path('2048/', views.game_2048, name='2048'),
-    path('game_end/<int:score>/<str:game_name>/', views.game_end, name='game_end'),  # todo only allows you to save scores to a default user right now
+    path('Hangman/', views.hangman, name='Hangman'),
+    path('PhaserTest/', views.phaser_test, name='PhaserTest'),
+    path('game_end/<int:score>/<str:game_name>/', views.game_end, name='game_end'),
+    path('leaderboards/<str:games>/', views.leaderboards, name='leaderboards')
 ]
