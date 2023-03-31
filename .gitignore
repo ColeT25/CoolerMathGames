@@ -1,4 +1,7 @@
 .idea
 useful_file_paths_for_django_use.txt
 __pycache__/
-cooler_math_games/migrations
+cooler_math_games/migrations/
+cooler_math_games/migrations/__pycache__/
+config/__pycache__/
+cooler_math_games/__pycache__/

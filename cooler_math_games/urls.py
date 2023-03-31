@@ -10,6 +10,7 @@ urlpatterns = [
     path('Avoid/', views.avoid_game, name='Avoid'),
     path('Flappy/', views.flappy, name='Flappy'),
     path('Mines/', views.mines, name='Mines'),
+    path('Catcher/', views.catcher, name='Catcher'),
     path('2048/', views.game_2048, name='2048'),
     path('Hangman/', views.hangman, name='Hangman'),
     path('PhaserTest/', views.phaser_test, name='PhaserTest'),

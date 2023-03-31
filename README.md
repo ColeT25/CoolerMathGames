@@ -17,7 +17,6 @@ THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM
 ## 3. Run CoolerMathGames on a local development server
 - Run the command `C:\<path_to_your_venv\Scripts\python.exe C:\path_to_cooler_math_games\manage.py runserver`
 - Then, go to `http://127.0.0.1:8000/games/home/`. This should be the home page of cooler math games!
-- You can check out a test game I made by going to: `http://127.0.0.1:8000/games/avoid/user/`, don't expect much out of this though lol
 - When you are ready to do admin things, move on to the next step!
 
 ## 4. Modify the database in order to add a game, user, or score
