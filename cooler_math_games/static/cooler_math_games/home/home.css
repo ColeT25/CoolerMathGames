@@ -16,10 +16,25 @@ body {
     height: 35px;
     border: 2px;
     border-color: black;
+    display: flex;
+}
+
+#login-menu {
+    height: 100%;
+    display: inline-block;
+}
+
+#logo {
+    width: 50%;
+    display: block;
+    bottom: 10px;
 }
 
 #navlist {
     height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    margin: auto;
 }
 
 .navbar a{
@@ -27,6 +42,12 @@ body {
     font-size: 20px;
     height: 100%;
     display: inline;
+}
+
+#login-menu a{
+    color: rgb(101,73,0);
+    display: inline;
+    height: 100%;
 }
 
 .navbar li {
@@ -64,7 +85,7 @@ li {
 
 a {
     text-decoration: none;
-    color: #333;
+    color: whitesmoke;
 }
 
 img {
