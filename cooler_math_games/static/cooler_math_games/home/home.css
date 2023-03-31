@@ -45,11 +45,7 @@ body {
 }
 
 #login-menu a{
-<<<<<<< HEAD
-    color: white;
-=======
     color: rgb(101,73,0);
->>>>>>> main
     display: inline;
     height: 100%;
 }
