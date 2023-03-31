@@ -125,6 +125,17 @@ def mines(request):
     return render(request, 'cooler_math_games/mines.html', get_view_context(request))
 
 
+def catcher(request):
+    """
+    The Catcher game view
+    """
+    # todo right now the user is always anon, will be changed in the future
+    catcher_game_db = Game.objects.get(name='catcher')
+    catcher_game_db.total_plays += 1
+    catcher_game_db.save()
+    return render(request, 'cooler_math_games/catcher.html', get_view_context(request))
+
+
 def game_2048(request):
     """
     The 2048 game view
