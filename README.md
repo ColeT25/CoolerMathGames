@@ -1,6 +1,6 @@
 # CoolerMathGames
 More information will be added to this readme as development continues
-THIS IS ALL ONLY TESTED ON WINDOWS RIGHT NOW, SO IT MAY BE DIFFERENT ON MAC I AM NOT SURE I'M SORRY
+
 
 # Running CoolerMathGames locally
 
