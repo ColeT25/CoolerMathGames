@@ -17,6 +17,13 @@ class SignUp(CreateView):
     template_name = 'registration/signup.html'
 
 
+def home_redirect_view(request):
+    """
+    Redirect the default page to the home cooler math games view
+    """
+    return HttpResponseRedirect('/games/home/')
+
+
 def home(request):
     """
     The home page for cooler math games
