@@ -17,6 +17,13 @@ class SignUp(CreateView):
     template_name = 'registration/signup.html'
 
 
+def home_redirect_view(request):
+    """
+    Redirect the default page to the home cooler math games view
+    """
+    return HttpResponseRedirect('/games/home/')
+
+
 def home(request):
     """
     The home page for cooler math games
@@ -25,7 +32,7 @@ def home(request):
     game_urls = []
     for game in all_games:
         game_urls.append(
-            f'http://127.0.0.1:8000/games/{game.name}/')  # if we ever run this on a real server we will need to change the url a bit
+            f'http://127.0.0.1:8000/games/{game.name}/')  # todo if we ever run this on a real server we will need to change the url a bit
     return render(request, 'cooler_math_games/home.html', {'top_games': all_games, 'game_urls': game_urls})
 
 
@@ -129,7 +136,6 @@ def catcher(request):
     """
     The Catcher game view
     """
-    # todo right now the user is always anon, will be changed in the future
     catcher_game_db = Game.objects.get(name='catcher')
     catcher_game_db.total_plays += 1
     catcher_game_db.save()
