@@ -201,7 +201,18 @@ function hitBomb (player, bomb)
     gameOver = true;
 }
 
+function quit_game(score) {
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/PhaserTest/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/PhaserTest/` //use https when not using localhost
+  }
+}
 </script>
-
+ <button onclick="quit_game(score)">Quit Game</button>
 </body>
 </html>
