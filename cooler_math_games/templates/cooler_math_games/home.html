@@ -7,34 +7,10 @@
     {% load static %}
     <link href="{% static 'cooler_math_games/home/home.css' %}" rel="stylesheet">
 </head>
+
+{% include "./header.html" %}
+
 <body>
-    <div class="header" id="home-header">
-        <br>
-        <img src="/static/cooler_math_games/images/CMG.png" alt="Cooler Math Games Logo" id="logo">
-    </div>
-
-    <nav class="navbar" id="home-nav">
-        <div id="login-menu">
-            {% if user.is_authenticated %}
-            <a id="logout" href="{% url 'cooler_math_games:logout' %}">&emsp;Log out {{ user.username }}!</a>
-
-            {% else %}
-            <a id="login" href="{% url 'cooler_math_games:login' %}">&emsp;Login!</a>
-            <a id="create_account" href="{% url 'cooler_math_games:signup' %}">&emsp;Create an account!</a>
-            {% endif %}
-        </div>
-        <ul id="navlist">
-            <li><a href="./"> Testing </a></li>
-            <li><a href="./"> Credits </a></li>
-            <li><a href="./"> Games </a></li>
-            <li><a href="./"> Cokey the Bear </a></li>
-            <li><a href="./"> Testing </a></li>
-            <li><a href="{% url 'cooler_math_games:leaderboards' 'all' %}">Leaderboards</a></li>
-        </ul>
-    </nav>
-
-    <br>
-
     {% if top_games and game_urls %}
         <ul>
             {% for game, game_link in top_games|zip:game_urls %}
@@ -45,4 +21,5 @@
         <p>Uh oh, there are no games :(</p>
     {% endif %}
 </body>
+
 </html>

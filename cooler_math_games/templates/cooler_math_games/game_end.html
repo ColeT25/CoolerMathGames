@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Game over!</title>
 </head>
+
+{% include "./header.html" %}
+
 <body>
     <form action="{% url 'cooler_math_games:game_end' score game %}" method="post">
         {% csrf_token %}
