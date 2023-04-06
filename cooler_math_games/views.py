@@ -52,7 +52,7 @@ def game_end(request, score, game_name):
         else:
             user = 'guest'
         GameScore.objects.create(user=user, game=game, score=score, date_obtained=now())
-        return HttpResponseRedirect('/games/home/')  # todo may add a play again type of page
+        return HttpResponseRedirect('/games/home/')
     else:  # fill out form with game score data
         form = SaveScoreForm()
         if request.user.is_authenticated:

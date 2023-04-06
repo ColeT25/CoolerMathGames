@@ -3,59 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Leaderboards</title>
-    <style>
-      body {
-        background-color: rgb(22, 32, 44);
-        font-family: Arial, sans-serif;
-        color: #fff;
-      }
-
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 30px;
-        background-color: rgb(42,69,93);
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      h1 {
-        font-size: 36px;
-        font-weight: bold;
-        color: #f44336;
-        margin-top: 0;
-        margin-bottom: 20px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 50px;
-        background-color: #B4B6BA;
-      }
-
-      thead {
-        background-color: #A1A4A9;
-        color: #fff;
-      }
-
-      thead th,
-      tbody td {
-        padding: 10px;
-        text-align: left;
-      }
-
-      tbody tr:nth-child(odd) {
-        background-color: #8A8D93;
-      }
-
-      tbody tr:nth-child(even) {
-        background-color: #6D7178;
-      }
-
-      td {
-        border-bottom: 1px solid #ddd;
-      }
-    </style>
+    {% load static %}
+    <link href="{% static 'cooler_math_games/leaderboards/leaderboards.css' %}" rel="stylesheet">
   </head>
   <body>
     <div class="container">
@@ -84,4 +33,4 @@
       {% endfor %}
     </div>
   </body>
-</html
+</html>
