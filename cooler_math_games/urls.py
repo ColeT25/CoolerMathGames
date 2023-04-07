@@ -15,5 +15,5 @@ urlpatterns = [
     path('Hangman/', views.hangman, name='Hangman'),
     path('PhaserTest/', views.phaser_test, name='PhaserTest'),
     path('game_end/<int:score>/<str:game_name>/', views.game_end, name='game_end'),
-    path('leaderboards/<str:games>/', views.leaderboards, name='leaderboards')
+    path('leaderboards/<str:games_or_user>/', views.leaderboards, name='leaderboards')
 ]

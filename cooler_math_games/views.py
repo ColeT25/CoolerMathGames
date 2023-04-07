@@ -64,22 +64,28 @@ def game_end(request, score, game_name):
     return render(request, 'cooler_math_games/game_end.html', {'form': form, 'game': game_name, 'score': score})
 
 
-def leaderboards(request, games):
+def leaderboards(request, games_or_user):
     """
     Leaderboard view for coolermath games
     :param request: http request
-    :param games: names of games seperated by spaces, if you want all games just make this "all"
+    :param games_or_user: names of games seperated by spaces, if you want all games just make this "all", if you want all games for the current user input current_user
     """
-    if games == 'all': # todo add specific logic for specific games so you can customize leaderboards viewed
+    if games_or_user in ('all', 'current_user'):  # todo add specific logic for specific games so you can customize leaderboards viewed
         games = Game.objects.all()
     # else games is specific games to display leaderboard for
 
-    # get data on the top 10 scores for each applicable game
+    # get data on the top 10 scores for each applicable game, or get all scores for a specific user
     leader_boards = {}
     for game in games:
-        top_10_scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10]
+        if games_or_user == 'current_user':
+            if request.user.is_authenticated:
+                scores_for_game = GameScore.objects.filter(game=game).filter(user=request.user.username).order_by('-score')
+            else:
+                scores_for_game = GameScore.objects.filter(game=game).filter(user='guest').order_by('-score')
+        else:
+            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10]
         formatted_game_scores = []
-        for game_score in top_10_scores_for_game:
+        for game_score in scores_for_game:
             formatted_game_scores.append({'score': game_score.score, 'user': game_score.user, 'time': game_score.date_obtained})
         leader_boards[game.name] = formatted_game_scores
     return render(request, 'cooler_math_games/leaderboards.html', {'leader_boards': leader_boards})
