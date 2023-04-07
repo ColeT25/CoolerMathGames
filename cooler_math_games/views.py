@@ -72,7 +72,10 @@ def leaderboards(request, games_or_user):
     """
     if games_or_user in ('all', 'current_user'):  # todo add specific logic for specific games so you can customize leaderboards viewed
         games = Game.objects.all()
-    # else games is specific games to display leaderboard for
+    else:
+        # only get data on games requested
+        games_requested = games_or_user.split(' ')
+        games = Game.objects.filter(name__in=games_requested)
 
     # get data on the top 10 scores for each applicable game, or get all scores for a specific user
     leader_boards = {}
@@ -82,8 +85,11 @@ def leaderboards(request, games_or_user):
                 scores_for_game = GameScore.objects.filter(game=game).filter(user=request.user.username).order_by('-score')
             else:
                 scores_for_game = GameScore.objects.filter(game=game).filter(user='guest').order_by('-score')
+        elif games_or_user == 'all':
+            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10] # only get top 10 scores for each game
         else:
-            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10]
+            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')
+
         formatted_game_scores = []
         for game_score in scores_for_game:
             formatted_game_scores.append({'score': game_score.score, 'user': game_score.user, 'time': game_score.date_obtained})
@@ -105,17 +111,6 @@ def get_view_context(request):
     else:
         context['user'] = 'guest'
     return context
-
-
-def avoid_game(request):
-    """
-    The test avoid game view
-    """
-    avoid_game_db = Game.objects.get(name='avoid')
-    avoid_game_db.total_plays += 1
-    avoid_game_db.save()
-
-    return render(request, 'cooler_math_games/avoid_game.html', get_view_context(request))
 
 
 def flappy(request):
