@@ -21,7 +21,8 @@ body {
 
 #login-menu {
     height: 100%;
-    display: inline-block;
+    display: inline-flex;
+    width: 20%;
 }
 
 #logo {
@@ -33,8 +34,7 @@ body {
 #navlist {
     height: 100%;
     display: inline-flex;
-    justify-content: center;
-    margin: auto;
+    padding-left: 16%;
 }
 
 .navbar a{
@@ -46,8 +46,9 @@ body {
 
 #login-menu a{
     color: rgb(101,73,0);
-    display: inline;
-    height: 100%;
+    font-size: 20px;
+    height: auto;
+    display: inline-flex;
 }
 
 .navbar li {

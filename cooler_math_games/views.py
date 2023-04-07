@@ -171,3 +171,9 @@ def hangman(request):
     hangman_db.total_plays += 1
     hangman_db.save()
     return render(request, 'cooler_math_games/hangman.html', get_view_context(request))
+
+def credits(request):
+    """
+    The credits view
+    """
+    return render(request, 'cooler_math_games/credits.html', get_view_context(request))
