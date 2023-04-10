@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(22,32,44);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: rgb(42,69,93);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.form-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: rgb(246,225,92);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form p {
+    margin-bottom: 10px;
+}
+
+.form label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(42,69,93);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.form-btn {
+    background-color: rgb(42,69,93);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.form-btn:hover {
+    background-color: rgb(24,40,54);
+}
+
+.form-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-link {
+    display: inline-block;
+    margin-right: 20px;
+    color: rgb(42,69,93);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: color 0.2s ease-in-out;
+}
+
+.form-link:hover {
+    color: rgb(24,40,54);
+}
