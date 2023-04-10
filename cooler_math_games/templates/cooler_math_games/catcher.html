@@ -15,8 +15,13 @@
         background-color: black;
       }
     </style>
-    
+    {% load cooler_math_games_extras %}
+    {% load static %}
+    <link href="{% static 'cooler_math_games/page.css' %}" rel="stylesheet">
 </head>
+
+{% include "./header.html" %}
+
 <body>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
 
