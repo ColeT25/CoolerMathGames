@@ -23,7 +23,8 @@ body {
 
 #login-menu {
     height: 100%;
-    display: inline-block;
+    display: inline-flex;
+    width: 20%;
 }
 
 #logo {
@@ -35,8 +36,7 @@ body {
 #navlist {
     height: 100%;
     display: inline-flex;
-    justify-content: center;
-    margin: auto;
+    padding-left: 16%;
 }
 
 .navbar a{
@@ -48,8 +48,9 @@ body {
 
 #login-menu a{
     color: rgb(101,73,0);
-    display: inline;
-    height: 100%;
+    font-size: 20px;
+    height: auto;
+    display: inline-flex;
 }
 
 .navbar li {
@@ -113,7 +114,7 @@ hr {
     width: 500px;
 }
 
-#board {
+#board-2048 {
     width: 400px;
     height: 400px;
 
@@ -200,4 +201,72 @@ hr {
 .x8192 {
     background-color: #ff2020;
     color: white;
+}
+
+/* Mines */
+#board-mine {
+    width: 480px;
+    height: 480px;
+    border: 10px solid darkgrey;
+    background-color: lightgray;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board div {
+    width: 28px;
+    height: 28px;
+    border:1px solid whitesmoke;
+
+    /* text */
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile-clicked {
+    background: darkgrey;
+}
+
+.x1 {
+    color: blue;
+}
+
+.x2 {
+    color: green;
+}
+
+.x3 {
+    color: red;
+}
+
+.x4 {
+    color: navy;
+}
+
+.x5 {
+    color: brown;
+}
+
+.x6 {
+    color: teal;
+}
+
+.x7 {
+    color: black;
+}
+
+.x8 {
+    color: gray;
+}
+
+#flag-button {
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    background-color: lightgray;
+    border: none;
 }
