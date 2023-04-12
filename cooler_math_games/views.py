@@ -113,16 +113,6 @@ def get_view_context(request):
     return context
 
 
-def flappy(request):
-    """
-    The flappy game view
-    """
-    flappy_game_db = Game.objects.get(name='flappy')
-    flappy_game_db.total_plays += 1
-    flappy_game_db.save()
-    return render(request, 'cooler_math_games/flappy.html', get_view_context(request))
-
-
 def mines(request):
     """
     The minesweeper game view

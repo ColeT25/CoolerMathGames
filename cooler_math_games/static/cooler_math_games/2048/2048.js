@@ -7,6 +7,12 @@ window.onload = function() {
     setGame();
 }
 
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 function setGame() {
     board = [
         [0, 0, 0, 0],

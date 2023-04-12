@@ -7,7 +7,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', views.SignUp.as_view(), name='signup'),
-    path('Flappy/', views.flappy, name='Flappy'),
     path('Mines/', views.mines, name='Mines'),
     path('Catcher/', views.catcher, name='Catcher'),
     path('2048/', views.game_2048, name='2048'),
