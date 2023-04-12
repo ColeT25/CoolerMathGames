@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Game over!</title>
+    <title>Game Over</title>
+    <style>
+        body {
+            background-color: rgb(22,32,44);
+            font-family: Arial, sans-serif;
+        }
+        #logo {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+        #home-header {
+            background-color: rgb(42,69,93);
+            height: 142px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        .game-over {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .game-over h2 {
+            font-size: 40px;
+            color: #f44336;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 50px;
+            color: red;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 24px;
+            border-radius: 5px;
+            background-color: #00aae9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #008cba;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #00aae9;
+            text-decoration: none;
+            text-align: center;
+        }
+        a:hover {
+            color: #008cba;
+        }
+
+    </style>
 </head>
+
+{% include "./header.html" %}
+
 <body>
-    <form action="{% url 'cooler_math_games:game_end' score game %}" method="post">
-        {% csrf_token %}
-        {{ form.as_table }}
-        <input type="submit" value="Save Your Score!">
-    </form>
-    <a href=" {% url 'cooler_math_games:home' %}">Do not save my score</a>
+   <div class="header" id="home-header">
+        <br>
+        <img src="/static/cooler_math_games/images/CMG.png" alt="Cooler Math Games Logo" id="logo">
+    </div>
+    <div class="container">
+        <div class="game-over">
+            <h2>Game Over!</h2>
+        </div>
+        <form action="{% url 'cooler_math_games:game_end' score game %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Save Your Score!">
+            <a href="{% url 'cooler_math_games:home' %}">Don't Save My Score</a>
+        </form>
+    </div>
 </body>
 </html>

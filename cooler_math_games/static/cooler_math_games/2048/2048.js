@@ -7,6 +7,12 @@ window.onload = function() {
     setGame();
 }
 
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 function setGame() {
     board = [
         [0, 0, 0, 0],
@@ -181,4 +187,19 @@ function slideDown() {
             updateTile(tile, num);
         }
     }
+}
+
+function quit_game() {
+  // Get the score from the span with an id of "score"
+  var score = document.getElementById("score").innerText;
+
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/2048/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/2048/` //use https when not using localhost
+  }
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Credits</title>
+
+        {% load static %}
+        <link href="{% static 'cooler_math_games/credits/credits.css' %}" rel="stylesheet">
+        <script src ="{% static 'cooler_math_games/credits/credits.js' %}" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div id="cards">
+            <div class="card">
+                <div class="text-container">
+                    <h2><b>About our Team</b></h6>
+                        <p>Hello! Welcome to CoolerMathGames, a project designed and developed by a team of students for their senior design project course, CS498. We would like to acknowledge all of the hard work and dedication of each team member who contributed to this project's success. Thanks for visiting CoolerMathGames, and we hope you enjoy our website!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="{% static 'cooler_math_games/images/Cole.png' %}" alt="Cole Thacker" id="cole-pic" class="image">
+                    <h4><b>Cole Thacker: &emsp;Web Development</b></h4>
+                </div>
+                <div class="text-container">
+                    <p>Cole is a junior with a strong interest in game development and web design. He plans on pursuing a career in the tech industry after graduation.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="image-container">
+                    <img src="{% static 'cooler_math_games/images/Tony.png' %}" alt="Tony Li" id="tony-pic" class="image">
+                    <h4><b>Tony Li: &emsp;&emsp;&emsp;&emsp;Web Development</b></h4>
+                </div>
+                <div class="text-container">
+                    <p>Tony is a senior passionate about game development. He is experienced in programming games and plans on pursuing a career in the gaming industry after graduation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="{% static 'cooler_math_games/images/Jesse.png' %}" alt="Jesse Perkins" id="jesse-pic" class="image">
+                    <h4><b>Jesse Perkins: Game Development</b></h4>
+                </div>
+                <div class="text-container"> 
+                    <p>Jesse is a senior passionate about software engineering and experienced in developing software solutions. He plans on pursuing a career in software engineering after graduation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="{% static 'cooler_math_games/images/Khumbo.png' %}" alt="Khumbo Phiri" id="khumbo-pic" class="image">
+                    <h4><b>Khumbo Phiri: Game Development</b></h4>
+                </div>
+                <div class="text-container">
+                    <p>Khumbo is a junior with a strong interest in web development and design. He plans on pursuing a career in web development and design after graduation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-container">
+                    <img src="{% static 'cooler_math_games/images/Zach.png' %}" alt="Zach Snow" id="zach-pic" class="image">
+                    <h4><b>Zach Snow: &emsp;Game Development</b></h4>
+                </div>
+                <div class="text-container">
+                    <p>Zach is a senior with an interest in machine learning and data science. After graduation, he plans on working in industry before pursuing his master's degree in data science.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

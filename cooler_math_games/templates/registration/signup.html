@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign up for an account!</title>
+  <meta charset="UTF-8">
+  <title>Sign Up!</title>
+  {% load static %}
+  <link href="{% static 'registration/signup.css' %}" rel="stylesheet">
 </head>
 <body>
-{% block content %}
-<h2>Register</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Register">
-</form>
-
-<a href="{% url 'cooler_math_games:login' %}">Back to login</a>
-<a href="{% url 'cooler_math_games:home' %}">Back to Home</a>
-{% endblock %}
+  {% block content %}
+  <div class="form-container">
+    <h2 class="form-title">Register</h2>
+    <form class="form" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="form-btn" type="submit">Register</button>
+    </form>
+    <div class="form-links">
+      <a class="form-link" href="{% url 'cooler_math_games:login' %}" style="color: rgb(246, 225, 92)">Back to login</a>
+      <a class="form-link" href="{% url 'cooler_math_games:home' %}" style="color: rgb(246, 225, 92)">Back to Home</a>
+    </div>
+  </div>
+  {% endblock %}
 </body>
 </html>

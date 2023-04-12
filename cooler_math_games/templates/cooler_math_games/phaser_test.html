@@ -5,11 +5,23 @@
     <title>Making your first Phaser 3 Game - Part 10</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <style type="text/css">
+        canvas {
+            display: block;
+            width: 45%;
+            margin: 0 auto;
+        }
         body {
             margin: 0;
         }
     </style>
+    {% load cooler_math_games_extras %}
+    {% load static %}
+    <link href="{% static 'cooler_math_games/page.css' %}" rel="stylesheet">
 </head>
+
+{% include "./header.html" %}
+<br>
+
 <body>
 
 <script type="text/javascript">
@@ -201,7 +213,18 @@ function hitBomb (player, bomb)
     gameOver = true;
 }
 
+function quit_game(score) {
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/PhaserTest/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/PhaserTest/` //use https when not using localhost
+  }
+}
 </script>
-
+<!--<button onclick="quit_game(score)">Quit Game</button>-->
 </body>
 </html>

@@ -10,11 +10,17 @@
         <script src ="{% static 'cooler_math_games/2048/2048.js' %}" type="text/javascript"></script>
     </head>
 
-    <body>
+    {% include "./header.html" %}
+
+    <br>
+
+    <body id="number-page">
         <h1>2048</h1>
         <hr>
         <h2>Score: <span id="score">0</span></h2>
         <div id="board">
         </div>
+        <button onclick="quit_game()" class="button-link">Quit Game</button>
+        <a href="{% url 'cooler_math_games:leaderboards' '2048' %}" class="button-link">See leaderboards for 2048!</a>
     </body>
 </html>
