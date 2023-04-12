@@ -52,7 +52,7 @@ def game_end(request, score, game_name):
         else:
             user = 'guest'
         GameScore.objects.create(user=user, game=game, score=score, date_obtained=now())
-        return HttpResponseRedirect('/games/home/')
+        return HttpResponseRedirect(f'/games/leaderboards/{game}')
     else:  # fill out form with game score data
         form = SaveScoreForm()
         if request.user.is_authenticated:

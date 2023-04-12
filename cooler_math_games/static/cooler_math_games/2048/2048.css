@@ -191,30 +191,3 @@ hr {
     background-color: #ff2020;
     color: white;
 }
-
-.button-link {
-  display: inline-block;
-  padding: 12px;
-  background-color: #f44336;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 3px;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 1.5;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  margin: 8px;
-}
-
-.button-link:hover {
-  background-color: #e53935;
-}
-
-.button-link:active {
-  background-color: #c62828;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
