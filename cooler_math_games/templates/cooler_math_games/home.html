@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Cooler Math Games Home</title>
     {% load cooler_math_games_extras %}
     {% load static %}
@@ -35,15 +37,45 @@
     </nav>
 
     <br>
+    <br>
 
-    {% if top_games and game_urls %}
-        <ul>
-            {% for game, game_link in top_games|zip:game_urls %}
-                <li><a href="{{ game_link }}">{{ game }}</a><img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}"></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Uh oh, there are no games :(</p>
-    {% endif %}
+    <div class="container justify-content-center">
+        <!--first link/text column-->
+
+        <!--games-->
+        <div class="row justify-content-center">
+        <div class="col-6">
+            {% if top_games and game_urls %}
+                {% for game, game_link in top_games|zip:game_urls %}
+            
+                    <div class="card" 
+                        style="
+                            width: 500px;
+                            border: solid; 
+                            border-radius: 20px;
+                            background-color: rgb(42,69,93);
+                            border-color: #ffaa55;
+                            margin-top: 30px;">
+                        <div class="row no-gutters">
+                            <div class="col-sm-3">
+                                <img class="card-img" style="border-radius: 10px; margin-left: 10px;" src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}" alt="Suresh Dasari Card">
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="card-body">
+                                    <a class="card-title" href="{{ game_link }}">{{ game }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Uh oh, there are no games :(</p>
+            {% endif %}
+        </div>
+        </div>
+
+    </div>
+    
+    
 </body>
 </html>
