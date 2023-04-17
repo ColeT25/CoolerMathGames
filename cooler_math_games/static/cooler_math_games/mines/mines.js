@@ -104,7 +104,15 @@ function clickTile() {
             gameOver = true;
             revealMines();
 
-            score = Math.ceil(300 / (tilesClicked + 1)) - 2 * flagsRemaining;
+            if (flagsRemaining == 40){
+                score = 0;
+            }
+            else if (flagsRemaining == 0){
+                score = 1000 - tilesClicked;
+            }
+            else{
+                score = 250 - flagsRemaining;
+            }
             setTimeout(quit_game, 5000, score)
             return;
         }

@@ -6,3 +6,4 @@ cooler_math_games/migrations/__pycache__/
 config/__pycache__/
 cooler_math_games/__pycache__/
 *.pyc
+config/__pycache__/settings.cpython-311.pyc

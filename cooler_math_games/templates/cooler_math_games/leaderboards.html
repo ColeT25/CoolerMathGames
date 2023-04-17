@@ -7,7 +7,7 @@
     <link href="{% static 'cooler_math_games/leaderboards/leaderboards.css' %}" rel="stylesheet">
   </head>
   <body>
-
+    {% include "./header.html" %}
     <div class="container">
       {% for game, score_data in leader_boards.items %}
       {% if score_data %}

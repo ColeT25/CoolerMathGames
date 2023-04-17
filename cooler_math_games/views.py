@@ -68,9 +68,9 @@ def leaderboards(request, games_or_user):
     """
     Leaderboard view for coolermath games
     :param request: http request
-    :param games_or_user: names of games seperated by spaces, if you want all games just make this "all", if you want all games for the current user input current_user
+    :param games_or_user: name of game, if you want all games just make this "all", if you want all games for the current user input current_user
     """
-    if games_or_user in ('all', 'current_user'):  # todo add specific logic for specific games so you can customize leaderboards viewed
+    if games_or_user in ('all', 'current_user'):
         games = Game.objects.all()
     else:
         # only get data on games requested
@@ -98,21 +98,6 @@ def leaderboards(request, games_or_user):
 
 
 # PUT GAME VIEWS BELOW HERE
-def get_view_context(request):
-    """
-    Function to get the authenticated username of the current user, or assign them as a guest
-
-    :param request: the http request
-    :return: the context to render a game view with the username
-    """
-    context = {'user': ''}
-    if request.user.is_authenticated:
-        context['user'] = request.user.username
-    else:
-        context['user'] = 'guest'
-    return context
-
-
 def mines(request):
     """
     The minesweeper game view
@@ -120,7 +105,7 @@ def mines(request):
     mines_game_db = Game.objects.get(name='mines')
     mines_game_db.total_plays += 1
     mines_game_db.save()
-    return render(request, 'cooler_math_games/mines.html', get_view_context(request))
+    return render(request, 'cooler_math_games/mines.html')
 
 
 def catcher(request):
@@ -130,7 +115,7 @@ def catcher(request):
     catcher_game_db = Game.objects.get(name='catcher')
     catcher_game_db.total_plays += 1
     catcher_game_db.save()
-    return render(request, 'cooler_math_games/catcher.html', get_view_context(request))
+    return render(request, 'cooler_math_games/catcher.html')
 
 
 def game_2048(request):
@@ -140,7 +125,7 @@ def game_2048(request):
     game_2048_db = Game.objects.get(name='2048')
     game_2048_db.total_plays += 1
     game_2048_db.save()
-    return render(request, 'cooler_math_games/2048.html', get_view_context(request))
+    return render(request, 'cooler_math_games/2048.html')
 
 
 def phaser_test(request):
@@ -150,7 +135,7 @@ def phaser_test(request):
     phaser_game_db = Game.objects.get(name='phasertest')
     phaser_game_db.total_plays += 1
     phaser_game_db.save()
-    return render(request, 'cooler_math_games/phaser_test.html', get_view_context(request))
+    return render(request, 'cooler_math_games/phaser_test.html')
 
 
 def hangman(request):
@@ -160,10 +145,10 @@ def hangman(request):
     hangman_db = Game.objects.get(name='hangman')
     hangman_db.total_plays += 1
     hangman_db.save()
-    return render(request, 'cooler_math_games/hangman.html', get_view_context(request))
+    return render(request, 'cooler_math_games/hangman.html')
 
 def credits(request):
     """
     The credits view
     """
-    return render(request, 'cooler_math_games/credits.html', get_view_context(request))
+    return render(request, 'cooler_math_games/credits.html')
