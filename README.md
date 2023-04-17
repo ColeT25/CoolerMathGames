@@ -1,5 +1,5 @@
 # CoolerMathGames
-More information will be added to this readme as development continues
+More information will be added to this readme as development continues, these instructions will only work on windows. If you are on mac, there should be similiar steps you can find by googling commands (sorry I do not have a mac so that is the best I can do to help - Cole)
 
 
 # Running CoolerMathGames locally
