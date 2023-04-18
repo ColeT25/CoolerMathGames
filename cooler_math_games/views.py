@@ -138,6 +138,17 @@ def phaser_test(request):
     return render(request, 'cooler_math_games/phaser_test.html')
 
 
+def tomato(request):
+    """
+    The Tomato Dash game view
+    """
+    # todo right now the user is always anon, will be changed in the future
+    tomato_game_db = Game.objects.get(name='tomato')
+    tomato_game_db.total_plays += 1
+    tomato_game_db.save()
+    return render(request, 'cooler_math_games/tomato.html')
+
+
 def hangman(request):
     """
     The hangman game view
