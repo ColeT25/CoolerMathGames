@@ -257,8 +257,8 @@ function displayGameWonScreen(){
 
 function displayGameLostScreen(){
     gameLostText.setActive(true).setVisible(true);
-    newButton.setActive(true).setVisible(true);
     scoreText.setText('streak: ' + score);
+    setTimeout(quit_game, 5000, score)
 }
 
 function checkInput(event){
@@ -302,7 +302,6 @@ function checkInput(event){
 
         //check if game was lost
         if(wrongGuessCount >= currentWord.length){
-            score = 0;
             gameOver = true;
             displayGameLostScreen();
         }

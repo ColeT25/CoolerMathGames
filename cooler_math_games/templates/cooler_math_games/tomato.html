@@ -154,6 +154,19 @@
 
             // Display 'Game Over' text
             let gameOverText = this.add.text(200, 300, 'Game Over', { fontSize: '64px', fill: '#ff0000' });
+            setTimeout(quit_game, 5000, score)
+        }
+
+        function quit_game(score) {
+              // Redirect the user to a certain webpage
+              var current_domain_name = window.location.hostname;
+              if (current_domain_name == "127.0.0.1"){
+                current_domain_name += ":8000"; //make sure to add port number if running on local host
+                window.location.href = `http://${current_domain_name}/games/game_end/${score}/Tomato/`
+              }
+              else{
+                    window.location.href = `https://${current_domain_name}/games/game_end/${score}/Tomato/` //use https when not using localhost
+              }
         }
     </script>
 

@@ -211,6 +211,7 @@ function hitBomb (player, bomb)
     player.anims.play('turn');
 
     gameOver = true;
+    setTimeout(quit_game, 5000, score)
 }
 
 function quit_game(score) {
@@ -225,6 +226,5 @@ function quit_game(score) {
   }
 }
 </script>
-<!--<button onclick="quit_game(score)">Quit Game</button>-->
 </body>
 </html>
