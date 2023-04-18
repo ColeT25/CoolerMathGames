@@ -1,0 +1,272 @@
+
+/*Home Page*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(22,32,44); 
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#home-header {
+    background-color: rgb(42,69,93);
+    height: 142px;
+}
+
+#home-nav {
+    background-color: rgb(246,225,92);
+    height: 35px;
+    border: 2px;
+    border-color: black;
+    display: flex;
+}
+
+#login-menu {
+    height: 100%;
+    display: inline-flex;
+    width: 20%;
+}
+
+#logo {
+    width: 50%;
+    display: block;
+    bottom: 10px;
+}
+
+#navlist {
+    height: 100%;
+    display: inline-flex;
+    padding-left: 16%;
+}
+
+.navbar a{
+    color: rgb(101,73,0);
+    font-size: 20px;
+    height: 100%;
+    display: inline;
+}
+
+#login-menu a{
+    color: rgb(101,73,0);
+    font-size: 20px;
+    height: auto;
+    display: inline-flex;
+}
+
+.navbar li {
+    margin: 0;
+    padding: 10px;
+}
+
+.navbar li:hover {
+    background-color: rgb(254,176,0);
+}
+
+.navbar a:hover {
+    background-color: rgb(254,176,0);
+}
+
+
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    margin-top: 0px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 10px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 10px auto;
+}
+
+p {
+    text-align: center;
+}
+
+/* 2048 */
+#number-page {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: rgb(22,32,44);
+    color: whitesmoke;
+}
+
+hr {
+    width: 500px;
+}
+
+#board-2048 {
+    width: 400px;
+    height: 400px;
+
+    background-color: #cdc1b5;
+    border: 6px solid #bbada0;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 90px;
+    height: 90px;
+    border: 5px solid #bbada0;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.x2 {
+    background-color: #eee4da;
+    color: #727371;
+}
+
+.x4 {
+    background-color: #ece0ca;
+    color: #727371;
+}
+
+.x8 {
+    background-color: #f4b17a;
+    color: white;
+}
+
+.x16 {
+    background-color: #f59575;
+    color: white;
+}
+
+.x32 {
+    background-color: #f57c5f;
+    color: white;
+}
+
+.x64 {
+    background-color: #f65d3b;
+    color: white;
+}
+
+.x128 {
+    background-color: #edce71;
+    color: white;
+}
+
+.x256 {
+    background-color: #edcc63;
+    color: white;
+}
+
+.x512 {
+    background-color: #edc651;
+    color: white;
+}
+
+.x1024 {
+    background-color: #eec744;
+    color: white;
+}
+
+.x2048 {
+    background-color: #ecc230;
+    color: white;
+}
+
+.x4096 {
+    background-color: #fe3d3d;
+    color: white;
+}
+
+.x8192 {
+    background-color: #ff2020;
+    color: white;
+}
+
+/* Mines */
+#board-mine {
+    width: 480px;
+    height: 480px;
+    border: 10px solid darkgrey;
+    background-color: lightgray;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board div {
+    width: 28px;
+    height: 28px;
+    border:1px solid whitesmoke;
+
+    /* text */
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile-clicked {
+    background: darkgrey;
+}
+
+.x1 {
+    color: blue;
+}
+
+.x2 {
+    color: green;
+}
+
+.x3 {
+    color: red;
+}
+
+.x4 {
+    color: navy;
+}
+
+.x5 {
+    color: brown;
+}
+
+.x6 {
+    color: teal;
+}
+
+.x7 {
+    color: black;
+}
+
+.x8 {
+    color: gray;
+}
+
+#flag-button {
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    background-color: lightgray;
+    border: none;
+}
