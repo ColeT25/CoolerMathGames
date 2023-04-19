@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- bootstrap css-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Cooler Math Games Home</title>
     {% load cooler_math_games_extras %}
     {% load static %}
     <link href="{% static 'cooler_math_games/page.css' %}" rel="stylesheet">
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 {% include "./header.html" %}
@@ -31,7 +31,11 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="card-body">
-                                    <a class="card-title" href="{{ game_link }}">{{ game }}</a>
+                                    <a class="card-title h4" href="{{ game_link }}">{{game.name}}</a>
+                                    <br>
+                                    <a><small>Author: {{game.author}}</small></a>
+                                    <br>
+                                    <a><small>Total Plays: {{game.total_plays}}</small></a>
                                 </div>
                             </div>
                         </div>
@@ -44,6 +48,13 @@
         </div>
 
     </div>
+
+    <script>
+        function getGameTitle(game){
+            const array = game.split(" ");
+            console.log(array);
+        }
+    </script>
     
 </body>
 

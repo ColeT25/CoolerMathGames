@@ -119,3 +119,8 @@ p {
     border-radius: 10px; 
     margin-left: 10px;
 }
+
+.card-title{
+    margin-top: 0px;
+    color : rgb(246,225,92);
+}
