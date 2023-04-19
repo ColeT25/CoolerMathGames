@@ -19,9 +19,9 @@
     </div>
     
     <ul id="navlist">
-        <li><a href="{% url 'cooler_math_games:Credits' %}"> Credits </a></li>
-        <li><a href="{% url 'cooler_math_games:home' %}"> Games </a></li>
-        <li><a href="{% url 'cooler_math_games:leaderboards' 'current_user' %}"> My High Scores </a></li>
-        <li><a href="{% url 'cooler_math_games:leaderboards' 'all' %}">Leaderboards</a></li>
+        <a class="navbar-link" href="{% url 'cooler_math_games:Credits' %}"> Credits </a>
+        <a class="navbar-link" href="{% url 'cooler_math_games:home' %}"> Games </a>
+        <a class="navbar-link" href="{% url 'cooler_math_games:leaderboards' 'current_user' %}"> My High Scores </a>
+        <a class="navbar-link" href="{% url 'cooler_math_games:leaderboards' 'all' %}">Leaderboards</a>
     </ul>
 </nav>

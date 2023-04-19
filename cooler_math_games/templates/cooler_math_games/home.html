@@ -24,17 +24,10 @@
             {% if top_games and game_urls %}
                 {% for game, game_link in top_games|zip:game_urls %}
             
-                    <div class="card" 
-                        style="
-                            width: 500px;
-                            border: solid; 
-                            border-radius: 20px;
-                            background-color: rgb(42,69,93);
-                            border-color: #ffaa55;
-                            margin-top: 30px;">
+                    <div class="card" >
                         <div class="row no-gutters">
                             <div class="col-sm-3">
-                                <img class="card-img" style="border-radius: 10px; margin-left: 10px;" src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}" alt="Suresh Dasari Card">
+                                <img class="card-img" src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}" alt="Suresh Dasari Card">
                             </div>
                             <div class="col-sm-7">
                                 <div class="card-body">
