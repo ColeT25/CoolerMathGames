@@ -15,6 +15,18 @@ window.onload = function() {
     startGame();
 }
 
+function quit_game(score) {
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/mines/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/mines/` //use https when not using localhost
+  }
+}
+
 function setMines() {
 
     var mines = [];
@@ -91,6 +103,17 @@ function clickTile() {
             alert("GAME OVER");
             gameOver = true;
             revealMines();
+
+            if (flagsRemaining == 40){
+                score = 0;
+            }
+            else if (flagsRemaining == 0){
+                score = 1000 - tilesClicked;
+            }
+            else{
+                score = 250 - flagsRemaining;
+            }
+            setTimeout(quit_game, 5000, score)
             return;
         }
 

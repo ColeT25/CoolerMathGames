@@ -17,6 +17,13 @@ class SignUp(CreateView):
     template_name = 'registration/signup.html'
 
 
+def home_redirect_view(request):
+    """
+    Redirect the default page to the home cooler math games view
+    """
+    return HttpResponseRedirect('/games/home/')
+
+
 def home(request):
     """
     The home page for cooler math games
@@ -25,7 +32,7 @@ def home(request):
     game_urls = []
     for game in all_games:
         game_urls.append(
-            f'http://127.0.0.1:8000/games/{game.name}/')  # if we ever run this on a real server we will need to change the url a bit
+            f'http://127.0.0.1:8000/games/{game.name}/')  # todo if we ever run this on a real server we will need to change the url a bit
     return render(request, 'cooler_math_games/home.html', {'top_games': all_games, 'game_urls': game_urls})
 
 
@@ -45,7 +52,7 @@ def game_end(request, score, game_name):
         else:
             user = 'guest'
         GameScore.objects.create(user=user, game=game, score=score, date_obtained=now())
-        return HttpResponseRedirect('/games/home/')  # todo may add a play again type of page
+        return HttpResponseRedirect(f'/games/leaderboards/{game}')
     else:  # fill out form with game score data
         form = SaveScoreForm()
         if request.user.is_authenticated:
@@ -57,64 +64,40 @@ def game_end(request, score, game_name):
     return render(request, 'cooler_math_games/game_end.html', {'form': form, 'game': game_name, 'score': score})
 
 
-def leaderboards(request, games):
+def leaderboards(request, games_or_user):
     """
     Leaderboard view for coolermath games
     :param request: http request
-    :param games: names of games seperated by spaces, if you want all games just make this "all"
+    :param games_or_user: name of game, if you want all games just make this "all", if you want all games for the current user input current_user
     """
-    if games == 'all': # todo add specific logic for specific games so you can customize leaderboards viewed
+    if games_or_user in ('all', 'current_user'):
         games = Game.objects.all()
-    # else games is specific games to display leaderboard for
+    else:
+        # only get data on games requested
+        games_requested = games_or_user.split(' ')
+        games = Game.objects.filter(name__in=games_requested)
 
-    # get data on the top 10 scores for each applicable game
+    # get data on the top 10 scores for each applicable game, or get all scores for a specific user
     leader_boards = {}
     for game in games:
-        top_10_scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10]
+        if games_or_user == 'current_user':
+            if request.user.is_authenticated:
+                scores_for_game = GameScore.objects.filter(game=game).filter(user=request.user.username).order_by('-score')
+            else:
+                scores_for_game = GameScore.objects.filter(game=game).filter(user='guest').order_by('-score')
+        elif games_or_user == 'all':
+            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')[:10] # only get top 10 scores for each game
+        else:
+            scores_for_game = GameScore.objects.filter(game=game).order_by('-score')
+
         formatted_game_scores = []
-        for game_score in top_10_scores_for_game:
+        for game_score in scores_for_game:
             formatted_game_scores.append({'score': game_score.score, 'user': game_score.user, 'time': game_score.date_obtained})
         leader_boards[game.name] = formatted_game_scores
     return render(request, 'cooler_math_games/leaderboards.html', {'leader_boards': leader_boards})
 
 
 # PUT GAME VIEWS BELOW HERE
-def get_view_context(request):
-    """
-    Function to get the authenticated username of the current user, or assign them as a guest
-
-    :param request: the http request
-    :return: the context to render a game view with the username
-    """
-    context = {'user': ''}
-    if request.user.is_authenticated:
-        context['user'] = request.user.username
-    else:
-        context['user'] = 'guest'
-    return context
-
-
-def avoid_game(request):
-    """
-    The test avoid game view
-    """
-    avoid_game_db = Game.objects.get(name='avoid')
-    avoid_game_db.total_plays += 1
-    avoid_game_db.save()
-
-    return render(request, 'cooler_math_games/avoid_game.html', get_view_context(request))
-
-
-def flappy(request):
-    """
-    The flappy game view
-    """
-    flappy_game_db = Game.objects.get(name='flappy')
-    flappy_game_db.total_plays += 1
-    flappy_game_db.save()
-    return render(request, 'cooler_math_games/flappy.html', get_view_context(request))
-
-
 def mines(request):
     """
     The minesweeper game view
@@ -122,18 +105,17 @@ def mines(request):
     mines_game_db = Game.objects.get(name='mines')
     mines_game_db.total_plays += 1
     mines_game_db.save()
-    return render(request, 'cooler_math_games/mines.html', get_view_context(request))
+    return render(request, 'cooler_math_games/mines.html')
 
 
 def catcher(request):
     """
     The Catcher game view
     """
-    # todo right now the user is always anon, will be changed in the future
     catcher_game_db = Game.objects.get(name='catcher')
     catcher_game_db.total_plays += 1
     catcher_game_db.save()
-    return render(request, 'cooler_math_games/catcher.html', get_view_context(request))
+    return render(request, 'cooler_math_games/catcher.html')
 
 
 def game_2048(request):
@@ -143,7 +125,7 @@ def game_2048(request):
     game_2048_db = Game.objects.get(name='2048')
     game_2048_db.total_plays += 1
     game_2048_db.save()
-    return render(request, 'cooler_math_games/2048.html', get_view_context(request))
+    return render(request, 'cooler_math_games/2048.html')
 
 
 def phaser_test(request):
@@ -153,7 +135,7 @@ def phaser_test(request):
     phaser_game_db = Game.objects.get(name='phasertest')
     phaser_game_db.total_plays += 1
     phaser_game_db.save()
-    return render(request, 'cooler_math_games/phaser_test.html', get_view_context(request))
+    return render(request, 'cooler_math_games/phaser_test.html')
 
 
 def hangman(request):
@@ -163,4 +145,10 @@ def hangman(request):
     hangman_db = Game.objects.get(name='hangman')
     hangman_db.total_plays += 1
     hangman_db.save()
-    return render(request, 'cooler_math_games/hangman.html', get_view_context(request))
+    return render(request, 'cooler_math_games/hangman.html')
+
+def credits(request):
+    """
+    The credits view
+    """
+    return render(request, 'cooler_math_games/credits.html')

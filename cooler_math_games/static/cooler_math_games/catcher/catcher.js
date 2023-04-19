@@ -108,4 +108,3 @@ const gameState = {
 }
 
 const game = new Phaser.Game(config)
-
