@@ -273,6 +273,8 @@ function displayGameLostScreen(){
     for (let i = 0; i < currentWord.length; i++){
         guesstext[i].setText(currentWord[i]);
     }
+    quit_game(score);
+    score = 0;
 }
 
 function checkInput(event){
@@ -320,7 +322,7 @@ function checkInput(event){
 
         //check if game was lost
         if(wrongGuessCount >= currentWord.length){
-            score = 0;
+            
             gameOver = true;
             displayGameLostScreen();
         }
