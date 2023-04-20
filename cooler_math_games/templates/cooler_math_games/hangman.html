@@ -80,7 +80,7 @@ var correctGuessCount = 0;
 var guesstext = [0,0,0,0,0,0]; //lol
 var words = [
     'absurd','absent','advice','adverb','aliens','almost','almond','ambush','anchor','admire','abduct','armpit','atrium','author','awoken','baguet','beacon',
-    'binary','bishop','blouse','bonsai','bother','bougie','brainy','brains','breath','budget','brutal','busted','bustle','burlap','buckle','brunet','breast',
+    'binary','bishop','blouse','bonsai','bother','bougie','brainy','brains','breath','budget','brutal','busted','bustle','burlap','buckle','brunet',
     'campus','canopy','carton','castle','cashew','change',
     'danish','deform','denial','devour','dimple','dingus',
     'earthy','engulf','enigma','exotic','export','equals',
@@ -92,8 +92,21 @@ var words = [
     'kelvin','kidney','knight','keypad',
     'ladies','lancet','launch','length','linear','layers',
     'mangle','margin','marvel','mascot','master','median',
+    'nachos','native','nights','nickel','nimble','nordic',
+    'object','openly','opiate','orange','orchid','outlaw',
+    'parcel','pathos','parole','pastry','phrase','pickle',
+    'quartz','quinoa','quaker','quiver',
+    'racket','radius','rancid','rating','recoup','reload','remain','remind','resize',
+    'satire','sailor','salted','scythe','senior','shaken','shadow','sherif','shiver',
+    'tandem','things','thorns','theory','thrive','thrown','tinder','tinker','thread',
+    'unclog','uneasy','unpaid','upbeat','upload','unsaid','usable','urgent','uphold',
+    'visual','values','vortex','voting','vulgar','vocals','vector','verify','victor',
+    'walrus','wealth','weight','weirdo','whiten','wisdom','wizard','wicked','whirly',
+    'yogurt','yonder',
+    'zenith','zebras','zodiac','zombie','zygote'
     
 ]
+var validKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 //colors
 var lightGrey = 0xD3D3D3;
@@ -228,7 +241,6 @@ function startGame(){
 
     //get the word for the round
     currentWord = words[Math.floor(Math.random()*words.length)];
-    console.log(currentWord);
 }
 
 function newGame(lastRoundWon){
@@ -246,7 +258,6 @@ function newGame(lastRoundWon){
     gameOver = false;
     guessedletters = [];
     currentWord = words[Math.floor(Math.random()*words.length)];
-    console.log(currentWord);
 }
 
 function displayGameWonScreen(){
@@ -259,6 +270,9 @@ function displayGameLostScreen(){
     gameLostText.setActive(true).setVisible(true);
     newButton.setActive(true).setVisible(true);
     scoreText.setText('streak: ' + score);
+    for (let i = 0; i < currentWord.length; i++){
+        guesstext[i].setText(currentWord[i]);
+    }
 }
 
 function checkInput(event){
@@ -266,6 +280,11 @@ function checkInput(event){
 
     //don't process input if not in a game
     if(gameOver){
+        return;
+    }
+
+    //abort if keystroke was not a letter
+    if(!validKeys.includes(event.key)){
         return;
     }
     
@@ -297,7 +316,6 @@ function checkInput(event){
     if(!guessedletters.includes(event.key)){
         wrongGuessCount++;
         man[wrongGuessCount - 1].setActive(true).setVisible(true);
-        console.log("letter isnt in word");
         guessedletters.push(event.key);
 
         //check if game was lost
