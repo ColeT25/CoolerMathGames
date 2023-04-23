@@ -158,6 +158,15 @@ def hangman(request):
     hangman_db.save()
     return render(request, 'cooler_math_games/hangman.html')
 
+def sudoku(request):
+    """
+    The sudoku game view
+    """
+    sudoku_db = Game.objects.get(name='sudoku')
+    sudoku_db.total_plays += 1
+    sudoku_db.save()
+    return render(request, 'cooler_math_games/sudoku.html')
+
 def credits(request):
     """
     The credits view
