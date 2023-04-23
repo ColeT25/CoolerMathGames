@@ -124,39 +124,3 @@ p {
     margin-top: 0px;
     color : rgb(246,225,92);
 }
-
-
-
-
-
-
-.container-c {
-    
-    border: solid; 
-    border-color: #ffaa55;
-    border-radius: 20px;
-    background-color: rgb(42,69,93);
-    display: grid;
-    align-items: center; 
-    grid-template-columns: .75fr 2fr .25fr;
-    column-gap: 5px;
-    width: 60%;
-    margin: auto;
-   }
-   
-   img {
-     max-width: 100%;
-     max-height:100%;
-     border-radius: 10px;
-   }
-   
-   .text {
-     font-size: 10px;
-     text-align: left;
-   }
-
-.text>.title {
-    color: rgb(246,225,92);
-    font-size: x-large;
-    font-weight: bold;
-}
