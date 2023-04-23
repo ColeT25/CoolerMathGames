@@ -268,14 +268,12 @@ function displayGameWonScreen(){
 
 function displayGameLostScreen(){
     gameLostText.setActive(true).setVisible(true);
-    newButton.setActive(true).setVisible(true);
     scoreText.setText('streak: ' + score);
     for (let i = 0; i < currentWord.length; i++){
         guesstext[i].setText(currentWord[i]);
     }
     quit_game(score);
     score = 0;
-}
 
 function checkInput(event){
     firstTurnTaken = true;
