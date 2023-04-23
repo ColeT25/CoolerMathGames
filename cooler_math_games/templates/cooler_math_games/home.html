@@ -6,21 +6,56 @@
     {% load cooler_math_games_extras %}
     {% load static %}
     <link href="{% static 'cooler_math_games/page.css' %}" rel="stylesheet">
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 {% include "./header.html" %}
 
 <body>
     <br>
-    {% if top_games and game_urls %}
-        <ul>
-            {% for game, game_link in top_games|zip:game_urls %}
-                <li><a href="{{ game_link }}">{{ game }}</a><img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}"></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Uh oh, there are no games :(</p>
-    {% endif %}
+
+    <div class="container justify-content-center">
+        <!--first link/text column-->
+
+        <!--games-->
+        <div class="row justify-content-center">
+        <div class="col-6">
+            {% if top_games and game_urls %}
+                {% for game, game_link in top_games|zip:game_urls %}
+            
+                    <div class="card" >
+                        <div class="row no-gutters">
+                            <div class="col-sm-3">
+                                <img class="card-img" src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}" alt="Suresh Dasari Card">
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="card-body">
+                                    <a class="card-title h4 font-weight-bold" href="{{ game_link }}">{{game.name}}</a>
+                                    <br>
+                                    <a><small>Author: {{game.author}}</small></a>
+                                    <br>
+                                    <a><small>Total Plays: {{game.total_plays}}</small></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Uh oh, there are no games :(</p>
+            {% endif %}
+        </div>
+        </div>
+
+    </div>
+
+    <script>
+        function getGameTitle(game){
+            const array = game.split(" ");
+            console.log(array);
+        }
+    </script>
+    
 </body>
 
 </html>

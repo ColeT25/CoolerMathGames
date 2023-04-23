@@ -99,3 +99,28 @@ img {
 p {
     text-align: center;
 }
+
+.navbar-link {
+    margin-right: 3%;
+    white-space: nowrap;
+}
+
+
+.card {
+    width: 500px;
+    border: solid; 
+    border-radius: 20px;
+    background-color: rgb(42,69,93);
+    border-color: #ffaa55;
+    margin-top: 30px;
+}
+
+.card-img {
+    border-radius: 10px; 
+    margin-left: 10px;
+}
+
+.card-title{
+    margin-top: 0px;
+    color : rgb(246,225,92);
+}
