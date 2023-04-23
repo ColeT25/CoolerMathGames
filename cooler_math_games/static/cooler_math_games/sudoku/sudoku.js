@@ -15,6 +15,15 @@ var perm_board = [
     "81--45---"
 ];
 
+tilesLeft = 0;
+for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+        if (perm_board[r][c] == "-") {
+            tilesLeft += 1;
+        }
+    }
+}
+
 var perm_solution = [
     "387491625",
     "241568379",
@@ -142,7 +151,13 @@ function selectTile() {
 
         if (solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
+            tilesLeft -= 1;
+
+            if (tilesLeft == 0) {
+                setTimeout(() => {quit_game();}, 3000);
+            }
         }
+
 
         else {
             errors += 1;
@@ -173,3 +188,18 @@ function setCharAt(str, idx, char) {
     if (idx > str.length-1) return str;
     return str.substring(0, idx) + char + str.substring(idx+1);
 }
+
+function quit_game() {
+    // Get the score from the span with an id of "score"
+    var score = Math.max(0, (100-(document.getElementById("errors").innerText)));
+  
+    // Redirect the user to a certain webpage
+    var current_domain_name = window.location.hostname;
+    if (current_domain_name == "127.0.0.1"){
+      current_domain_name += ":8000"; //make sure to add port number if running on local host
+      window.location.href = `http://${current_domain_name}/games/game_end/${score}/Sudoku/`
+    }
+    else{
+          window.location.href = `https://${current_domain_name}/games/game_end/${score}/Sudoku/` //use https when not using localhost
+    }
+  }
