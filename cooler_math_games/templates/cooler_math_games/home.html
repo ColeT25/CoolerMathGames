@@ -32,7 +32,7 @@
             {% if top_games and game_urls %}
                 {% for game, game_link in top_games|zip:game_urls %}
             
-                    <div class="container">
+                    <div class="container-c">
                         <div class="image">
                           <img src="{% static 'cooler_math_games/images/'|add:game.name|add:'.png' %}">
                         </div>
