@@ -11,6 +11,7 @@ urlpatterns = [
     path('Catcher/', views.catcher, name='Catcher'),
     path('Tomato/', views.tomato, name='Tomato'),
     path('2048/', views.game_2048, name='2048'),
+    path('2048Fibonacci/', views.game_2048_Fibonacci, name='2048Fibonacci'),
     path('Sudoku/', views.sudoku, name='Sudoku'),
     path('Hangman/', views.hangman, name='Hangman'),
     path('PhaserTest/', views.phaser_test, name='PhaserTest'),

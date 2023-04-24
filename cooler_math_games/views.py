@@ -127,6 +127,15 @@ def game_2048(request):
     game_2048_db.save()
     return render(request, 'cooler_math_games/2048.html')
 
+def game_2048_Fibonacci(request):
+    """
+    The 2048 Fib game view
+    """
+    game_2048_fibonacci_db = Game.objects.get(name='2048Fibonacci')
+    game_2048_fibonacci_db.total_plays += 1
+    game_2048_fibonacci_db.save()
+    return render(request, 'cooler_math_games/2048Fibonacci.html')
+
 
 def phaser_test(request):
     """
