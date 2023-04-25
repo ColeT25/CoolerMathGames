@@ -7,15 +7,22 @@
         html{
             margin: 0;
             padding: 0;
-            overflow: hidden;
         }
 
         canvas {
             display: flex;
-            width: 55%;
+            width: 50%;
             margin: 0 auto;
             flex-basis: 10%;
         }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -25,25 +32,33 @@
             display: inline-flex;
         }
 
-
-        #message {
-            flex-basis: 600%;
+        p {
             font-size: 25px;
             color: aqua;
             font-weight: bold;
-            text-align: left;
-            padding-top: 10px;
+            margin: auto;
         }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            position: absolute;
+            z-index: 100;
+        }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
 </head>
+
+{% include "./header.html" %}
+<br>
+
 <body>
-    
-    <div class="container">
-        <canvas id="gameCanvas"></canvas>
-        <div id="message">Movement: Left, Right, Down // Jump: Spacebar</div>
+
+        <div class="game-container">
+        <button id="startButton">Start</button>
+        <button id="restartButton" style="display: none;">Restart</button>
     </div>
-    
     <script>
         const config = {
             type: Phaser.AUTO,
@@ -62,7 +77,23 @@
             }
         };
 
-        const game = new Phaser.Game(config);
+        let game;
+        let startButton = document.getElementById('startButton');
+        let restartButton = document.getElementById('restartButton');
+        startButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', restartGame);
+
+        function startGame() {
+            startButton.style.display = 'none';
+            game = new Phaser.Game(config);
+        }
+
+        function restartGame() {
+            restartButton.style.display = 'none';
+            game.destroy(true);
+            game = new Phaser.Game(config);
+        }
+
         let player, stars, maggots, cursors, nextStarTime, spacebar, score, scoreText;
 
         function preload() {
@@ -95,7 +126,12 @@
 
         let generateMaggot = false;
 
-        function update(time) {
+        
+            let lastMaggotTime = 0;
+            const minMaggotInterval = 3500; // Minimum time between maggot generations
+        
+        
+                function update(time) {
             if (cursors.left.isDown) {
                 player.setVelocityX(-200);
             } else if (cursors.right.isDown) {
@@ -115,20 +151,23 @@
             if (time > nextStarTime) {
                 nextStarTime = time + Phaser.Math.Between(1000, 2000);
 
-                if (generateMaggot) {
+
+                if (generateMaggot && time - lastMaggotTime >= minMaggotInterval) {
                     let maggot = maggots.create(800, 570, 'maggot');
                     maggot.body.allowGravity = false;
                     maggot.setVelocityX(-100);
+
+                    lastMaggotTime = time; // Update the lastMaggotTime
                 } else {
                     let star = stars.create(800, 570, 'star');
                     star.body.allowGravity = false;
                     star.setVelocityX(-100);
                 }
 
-                generateMaggot = !generateMaggot;
+            generateMaggot = !generateMaggot;
             }
 
-            // Update crate and maggot positions and remove them if necessary
+            // Update tomato and maggot positions and remove them if necessary
             stars.children.iterate(function (star) {
                 if (star.x < -50) {
                     star.x = 800;
@@ -157,9 +196,30 @@
 
             // Display 'Game Over' text
             let gameOverText = this.add.text(200, 300, 'Game Over', { fontSize: '64px', fill: '#ff0000' });
+            
+            // Show the restart button
+            restartButton.style.display = 'block';
+        }
+
+        function quit_game(score) {
+            // Redirect the user to a certain webpage
+            var current_domain_name = window.location.hostname;
+            if (current_domain_name == "127.0.0.1"){
+                current_domain_name += ":8000"; //make sure to add port number if running on local host
+                window.location.href = `http://${current_domain_name}/games/game_end/${score}/Tomato/`
+            }
+            else{
+                window.location.href = `https://${current_domain_name}/games/game_end/${score}/Tomato/` //use https when not using localhost
+            }
         }
     </script>
-    
 
+    <div class="message">
+        <p>Movement: Left, Right, Down // Jump: Spacebar</p>
+        <br>
+    </div>
+    
 </body>
+
 </html>
+
