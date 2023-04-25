@@ -127,6 +127,23 @@ def game_2048(request):
     game_2048_db.save()
     return render(request, 'cooler_math_games/2048.html')
 
+def game_2048_Fibonacci(request):
+    """
+    The 2048 Fib game view
+    """
+    game_2048_fibonacci_db = Game.objects.get(name='2048Fibonacci')
+    game_2048_fibonacci_db.total_plays += 1
+    game_2048_fibonacci_db.save()
+    return render(request, 'cooler_math_games/2048Fibonacci.html')
+
+def climber(request):
+    """
+    The climber game view
+    """
+    climber_db = Game.objects.get(name='climber')
+    climber_db.total_plays += 1
+    climber_db.save()
+    return render(request, 'cooler_math_games/climber.html')
 
 def phaser_test(request):
     """
