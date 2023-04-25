@@ -14,13 +14,48 @@
         padding: 0;
         background-color: black;
       }
+      #instructions {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
-    
+    {% load static %}
+    <link href="{% static 'cooler_math_games/page.css' %}" rel="stylesheet">
 </head>
+
+{% include "./header.html" %}
+
 <body>
+    
+    
+        <div id="instructions">
+        <h2>Instructions</h2>
+        <p>
+            Catch as many bugs as you can in 15 seconds! Use the left and right arrow keys to move! Good luck!
+        </p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
 
     <script>
+function quit_game(score) {
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/Catcher/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/Catcher/` //use https when not using localhost
+  }
+}
 
 const gameState = {
     //game starts out at zero
@@ -84,6 +119,7 @@ const gameState = {
           gameState.timer.remove();
           this.physics.pause();
           this.add.text(200, 150, 'Time\'s up!', { fontSize: '40px', fill: '#000' });
+          setTimeout(quit_game(gameState.score), 5000);
         }
       },
       loop: true,
@@ -137,8 +173,6 @@ const game = new Phaser.Game(config)
 
 
     </script>
-
-
 
 </body>
 </html>
