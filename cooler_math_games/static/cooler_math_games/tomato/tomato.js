@@ -15,7 +15,23 @@ const config = {
             }
         };
 
-        const game = new Phaser.Game(config);
+        let game;
+        let startButton = document.getElementById('startButton');
+        let restartButton = document.getElementById('restartButton');
+        startButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', restartGame);
+
+        function startGame() {
+            startButton.style.display = 'none';
+            game = new Phaser.Game(config);
+        }
+
+        function restartGame() {
+            restartButton.style.display = 'none';
+            game.destroy(true);
+            game = new Phaser.Game(config);
+        }
+
         let player, stars, maggots, cursors, nextStarTime, spacebar, score, scoreText;
 
         function preload() {
@@ -48,7 +64,12 @@ const config = {
 
         let generateMaggot = false;
 
-        function update(time) {
+        
+            let lastMaggotTime = 0;
+            const minMaggotInterval = 3500; // Minimum time between maggot generations
+        
+        
+                function update(time) {
             if (cursors.left.isDown) {
                 player.setVelocityX(-200);
             } else if (cursors.right.isDown) {
@@ -68,20 +89,23 @@ const config = {
             if (time > nextStarTime) {
                 nextStarTime = time + Phaser.Math.Between(1000, 2000);
 
-                if (generateMaggot) {
+
+                if (generateMaggot && time - lastMaggotTime >= minMaggotInterval) {
                     let maggot = maggots.create(800, 570, 'maggot');
                     maggot.body.allowGravity = false;
                     maggot.setVelocityX(-100);
+
+                    lastMaggotTime = time; // Update the lastMaggotTime
                 } else {
                     let star = stars.create(800, 570, 'star');
                     star.body.allowGravity = false;
                     star.setVelocityX(-100);
                 }
 
-                generateMaggot = !generateMaggot;
+            generateMaggot = !generateMaggot;
             }
 
-            // Update crate and maggot positions and remove them if necessary
+            // Update tomato and maggot positions and remove them if necessary
             stars.children.iterate(function (star) {
                 if (star.x < -50) {
                     star.x = 800;
@@ -110,4 +134,19 @@ const config = {
 
             // Display 'Game Over' text
             let gameOverText = this.add.text(200, 300, 'Game Over', { fontSize: '64px', fill: '#ff0000' });
+            
+            // Show the restart button
+            restartButton.style.display = 'block';
+        }
+
+        function quit_game(score) {
+            // Redirect the user to a certain webpage
+            var current_domain_name = window.location.hostname;
+            if (current_domain_name == "127.0.0.1"){
+                current_domain_name += ":8000"; //make sure to add port number if running on local host
+                window.location.href = `http://${current_domain_name}/games/game_end/${score}/Tomato/`
+            }
+            else{
+                window.location.href = `https://${current_domain_name}/games/game_end/${score}/Tomato/` //use https when not using localhost
+            }
         }
