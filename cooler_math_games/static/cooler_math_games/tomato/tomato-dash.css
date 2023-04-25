@@ -1,4 +1,4 @@
-html{
+        html{
             margin: 0;
             padding: 0;
         }
@@ -16,6 +16,18 @@ html{
             height: 100%;
             position: relative;
         }
+        #instructions {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            margin: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         body {
             margin: 0;
@@ -28,7 +40,7 @@ html{
 
         p {
             font-size: 25px;
-            color: aqua;
+            color: gray;
             font-weight: bold;
             margin: auto;
         }
