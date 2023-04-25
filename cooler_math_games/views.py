@@ -167,6 +167,15 @@ def hangman(request):
     hangman_db.save()
     return render(request, 'cooler_math_games/hangman.html')
 
+def climber(request):
+    """
+    The climber game view
+    """
+    climber_db = Game.objects.get(name='climber')
+    climber_db.total_plays += 1
+    climber_db.save()
+    return render(request, 'cooler_math_games/climber.html')
+
 def sudoku(request):
     """
     The sudoku game view
