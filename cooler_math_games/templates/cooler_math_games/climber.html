@@ -101,16 +101,16 @@ function create ()
     var timer = this.time.delayedCall(6000, destroySpawnPlatform, [], this);  // delay in ms
 
     //  The score
-    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#FFF' });
 
     //set timer to add 10 to the score every second
     var scoreTimer = this.time.addEvent({
-    delay: 1000,                // ms
-    callback: updateScore,
-    //args: [],
-    callbackScope: this,
-    loop: true
-});
+        delay: 1000,                // ms
+        callback: updateScore,
+        //args: [],
+        callbackScope: this,
+        loop: true
+    });
 }
 
 
