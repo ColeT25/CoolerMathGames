@@ -1,15 +1,22 @@
 html{
             margin: 0;
             padding: 0;
-            overflow: hidden;
         }
 
         canvas {
             display: flex;
-            width: 55%;
+            width: 50%;
             margin: 0 auto;
             flex-basis: 10%;
         }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -19,12 +26,16 @@ html{
             display: inline-flex;
         }
 
-
-        #message {
-            flex-basis: 600%;
+        p {
             font-size: 25px;
             color: aqua;
             font-weight: bold;
-            text-align: left;
-            padding-top: 10px;
+            margin: auto;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            position: absolute;
+            z-index: 100;
         }
