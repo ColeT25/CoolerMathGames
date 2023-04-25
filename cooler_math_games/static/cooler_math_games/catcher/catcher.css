@@ -3,6 +3,12 @@
         width: 65%;
         margin: 0 auto;
       }
+      p {
+        font-size: 25px;
+        color: gray;
+        font-weight: bold;
+        margin: auto;
+      }
       body {
         margin: 0;
         padding: 0;
