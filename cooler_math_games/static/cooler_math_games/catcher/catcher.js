@@ -1,3 +1,15 @@
+function quit_game(score) {
+  // Redirect the user to a certain webpage
+  var current_domain_name = window.location.hostname;
+  if (current_domain_name == "127.0.0.1"){
+    current_domain_name += ":8000"; //make sure to add port number if running on local host
+    window.location.href = `http://${current_domain_name}/games/game_end/${score}/Catcher/`
+  }
+  else{
+        window.location.href = `https://${current_domain_name}/games/game_end/${score}/Catcher/` //use https when not using localhost
+  }
+}
+
 const gameState = {
     //game starts out at zero
     score: 0
@@ -60,6 +72,7 @@ const gameState = {
           gameState.timer.remove();
           this.physics.pause();
           this.add.text(200, 150, 'Time\'s up!', { fontSize: '40px', fill: '#000' });
+          setTimeout(quit_game(gameState.score), 5000);
         }
       },
       loop: true,

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from .secrets_config import DatabaseLogin, SettingsParams
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qj624kd6!arcb&l8m(1ex0xknwd-q7@1foifs#d&cf4x2nv!ja'
+SECRET_KEY = SettingsParams.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = SettingsParams.debug
 
 ALLOWED_HOSTS = []
 
@@ -83,12 +84,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CoolerMathGames',
-        'USER': 'ColeT',
-        'PASSWORD': 'coleThacker091602#',
-        'HOST': 'cooler-math-games.cctffrsopstu.us-east-2.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': DatabaseLogin.engine,
+        'NAME': DatabaseLogin.name,
+        'USER': DatabaseLogin.user,
+        'PASSWORD': DatabaseLogin.password,
+        'HOST': DatabaseLogin.host,
+        'PORT': DatabaseLogin.port,
     }
 }
 

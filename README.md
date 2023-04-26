@@ -6,6 +6,7 @@ More information will be added to this readme as development continues, these in
 
 ## 1. Checkout the CoolerMathGames repo to your machine
 - There are multiple ways to do this, whatever way you prefer will work as long as there is a local copy of this repo on your computer
+- **Also, make sure you get the secrets_config.py file from Cole Thacker (colethacker25@gmail.com) and place it in the config directory**
 ## 2. Create virtual environment for python 3.11.0
 - Make sure you have python 3.11.0 installed on your system
   - The install for this can be found [here](https://www.python.org/downloads/release/python-3110/)

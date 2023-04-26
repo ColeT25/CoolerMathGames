@@ -55,7 +55,7 @@ function create() {
     spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.physics.add.collider(player, stars, collectStar, null, this);
-    
+
     this.physics.add.collider(player, maggots, gameOver, null, this);
 
     score = 0;
@@ -77,10 +77,10 @@ let generateMaggot = false;
     } else {
         player.setVelocityX(0);
     }
-    
+
     if (cursors.down.isDown) {
         player.setVelocityY(200);
-    } 
+    }
 
     if (spacebar.isDown && (player.body.onFloor() || player.body.touching.down)) {
         player.setVelocityY(-230);
@@ -134,10 +134,11 @@ function gameOver(player, maggot) {
 
     // Display 'Game Over' text
     let gameOverText = this.add.text(200, 300, 'Game Over', { fontSize: '64px', fill: '#ff0000' });
-    
+
     // Show the restart button
     restartButton.style.display = 'block';
-    setTimeout(() => {quit_game();}, 5000);
+
+    setTimeout(() => {quit_game(score);}, 3000);
 }
 
 function quit_game(score) {

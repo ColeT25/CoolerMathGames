@@ -1,0 +1,9 @@
+canvas {
+            display: block;
+            width: 45%;
+            margin: 0 auto;
+}
+body {
+    margin: 0;
+    overflow: auto;
+}
